@@ -1,3 +1,16 @@
+/**
+ * @file DOPLED.cpp
+ * @brief Driver for Data Over Power addressable LEDs.
+ *
+ * See https://github.com/jratke587/DOPLED for more information on supported hardware and usage.
+ *
+ * @note This library only supports ESP32 microcontrollers.
+ *
+ * @author John Ratke
+ * @date 2025
+ * @license MIT
+ */
+
 #include <DOPLED.h>
 
 DOPLED::DOPLED(uint8_t pin, uint8_t timeBase_us)
@@ -185,7 +198,10 @@ DOPLED::~DOPLED()
 {
   if (led_chan)
   {
-    rmt_disable(led_chan);
+    if (_initialized)
+    {
+      rmt_disable(led_chan);
+    }
     rmt_del_channel(led_chan);
   }
   if (dopled_encoder)
