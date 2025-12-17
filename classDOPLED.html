@@ -30,7 +30,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">DOPLED<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">DOPLED<span id="projectnumber">&#160;1.1.1</span>
    </div>
    <div id="projectbrief">ESP32 Library for driving 24-29V low speed Data Over Power LED Sets</div>
   </td>
@@ -93,7 +93,6 @@ $(function(){ initResizable(false); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="classDOPLED-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">DOPLED Class Reference</div></div>
 </div><!--header-->
@@ -132,19 +131,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1f824dba50ea91a8cb02e3567cede7cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates random groups and sets them to a specific color.  <br /></td></tr>
 <tr class="separator:a1f824dba50ea91a8cb02e3567cede7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab62aedbc3272888e48d6196b15796f2b" id="r_ab62aedbc3272888e48d6196b15796f2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab62aedbc3272888e48d6196b15796f2b">setFlags</a> (uint8_t flagByte)</td></tr>
-<tr class="memdesc:ab62aedbc3272888e48d6196b15796f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the last 3 bits of the command byte, which are configurable flags.  <br /></td></tr>
 <tr class="separator:ab62aedbc3272888e48d6196b15796f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60cb5fd9820d818777e424d534e1884d" id="r_a60cb5fd9820d818777e424d534e1884d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60cb5fd9820d818777e424d534e1884d">transmitDone</a> ()</td></tr>
 <tr class="memdesc:a60cb5fd9820d818777e424d534e1884d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the previous transmission has completed.  <br /></td></tr>
 <tr class="separator:a60cb5fd9820d818777e424d534e1884d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cbb3351122f38370af63de32fb523a7" id="r_a3cbb3351122f38370af63de32fb523a7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3cbb3351122f38370af63de32fb523a7">~DOPLED</a> ()</td></tr>
 <tr class="separator:a3cbb3351122f38370af63de32fb523a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a4b9b6f13240dc7e5b11dd06448854471" id="r_a4b9b6f13240dc7e5b11dd06448854471"><td class="memItemLeft" align="right" valign="top"><a id="a4b9b6f13240dc7e5b11dd06448854471" name="a4b9b6f13240dc7e5b11dd06448854471"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>dopled_tx_done_callback</b> (rmt_channel_handle_t channel, const rmt_tx_done_event_data_t *edata, void *user_ctx)</td></tr>
-<tr class="separator:a4b9b6f13240dc7e5b11dd06448854471"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Driver for Data Over Power addressable LEDs. </p>
@@ -338,6 +330,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>dopled_tx_done_callba
       </table>
 </div><div class="memdoc">
 <p>Sets a group of pixels according to the mask and address.</p>
+<dl class="section note"><dt>Note</dt><dd>Blocks if a previous transmission is still in progress. Use <a class="el" href="#a60cb5fd9820d818777e424d534e1884d" title="Checks if the previous transmission has completed.">transmitDone()</a> to avoid blocking.</dd></dl>
 <p>The mask determines which bits of the pixel address are checked by the LEDs. Pixels matching the specified bits will be set.</p>
 <p>Ex: fillMatchingAddresses(0b00000011, 0, 255, 0, 0) - set pixels 0, 4, 8, 12, etc. to red.</p>
 <p>Ex: fillMatchingAddresses(0b11111000, 0, 0, 0, 255) - set pixels 0-7 to blue.</p>
@@ -454,10 +447,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>dopled_tx_done_callba
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Sets the last 3 bits of the command byte, which are configurable flags. </p>
 <dl class="section warning"><dt>Warning</dt><dd>Advanced functionality. Improper usage may cause undefined or undocumented behavior.</dd></dl>
-<p>It is not known what these flags do, but they are included for completeness.</p>
+<p>Sets the last 3 bits of the command byte, which are configurable flags. It is not known what these flags do, but they are included for completeness.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">flagByte</td><td>3-bit value containing the flags to use. </td></tr>
