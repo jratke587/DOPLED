@@ -74,6 +74,9 @@ public:
     /**
      * Sets a group of pixels according to the mask and address.
      *
+     * @note Blocks if a previous transmission is still in progress.
+     * Use transmitDone() to avoid blocking.
+     * 
      * @details
      * The mask determines which bits of the pixel address are checked by
      * the LEDs. Pixels matching the specified bits will be set.
@@ -148,8 +151,7 @@ public:
      * @warning Advanced functionality.
      * Improper usage may cause undefined or undocumented behavior.
      *
-     * @brief Sets the last 3 bits of the command byte, which are configurable flags.
-     *
+     * Sets the last 3 bits of the command byte, which are configurable flags.
      * It is not known what these flags do, but they are included for completeness.
      *
      * @param flagByte 3-bit value containing the flags to use.
