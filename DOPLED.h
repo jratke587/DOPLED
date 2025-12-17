@@ -21,122 +21,149 @@
  * @class DOPLED
  * @brief Driver for Data Over Power addressable LEDs.
  *
- * See https://github.com/jratke587/DOPLED for more information on supported hardware and usage.
- *
  * @note This library only supports ESP32 microcontrollers.
  */
 class DOPLED
 {
 public:
     /**
-     * Creates a DOPLED Object with a specific timebase.
-     * 
-     * The timebase defines the width of each pulse. Different LEDs may tolerate 
-     * different timings. Typical value is 70-120us. Lower timings allow faster 
-     * updates but may not work with all LEDs. 
-     * 
+     * @brief Creates a DOPLED Object with a specific timebase.
+     *
+     * The timebase defines the width of each pulse. Different LEDs may tolerate
+     * different timings. Typical value is 70-120us. Lower timings allow faster
+     * updates but may not work with all LEDs.
+     *
      * @param pin ESP32 output pin
      * @param timeBase_us Timebase in microseconds (default: 70us)
      */
     DOPLED(uint8_t pin, uint8_t timeBase_us);
     /**
-     * Creates a DOPLED Object with a specific timebase.
-     * 
+     * @brief Creates a DOPLED Object.
+     *
      * @note Uses a default timebase of 70 us.
      * @see DOPLED(uint8_t, uint8_t)
-     * 
+     *
      * @param pin ESP32 output pin
      */
     DOPLED(uint8_t pin);
     /**
-     * Must be called before sending any data to the LEDs.
-     * Calling any pixel or fill function before begin() will result in no output.
-     * 
-     * Enables the ESP32's RMT output.
+     * @note Must be called before sending any data to the LEDs.
+     * Calling any write or fill method before begin() will result in no output.
+     *
+     * @brief Enables the ESP32's RMT output.
      */
     void begin();
     /**
-     * Disables the ESP32's RMT output and set the pin LOW.
+     * @brief Disables the ESP32's RMT output and set the pin LOW.
+     *
      * DOP LEDs use the same amount of power when displaying black as when displaying white.
-     * This function should be called when the LED is off to save power.
+     * Call this method when the LEDs are off for long duations to reduce power consumption.
      */
     void end();
     /**
-     * @warning ADVANCED FUNCTIONALITY
-     * Improper usage may cause undefined behavior.
-     * 
+     * @warning Advanced functionality.
+     * Improper usage may cause undefined or undocumented behavior.
+     *
+     * @note Blocks if a previous transmission is still in progress.
+     * Use transmitDone() to avoid blocking.
+     *
      * @param data Byte array containing the raw data to be sent.
      * @param size Size of the byte array.
      */
     void sendRaw(uint8_t *data, size_t size);
     /**
      * Sets a group of pixels according to the mask and address.
-     * 
+     *
      * @details
-     * The mask determines which bits of the pixel address are checked by 
+     * The mask determines which bits of the pixel address are checked by
      * the LEDs. Pixels matching the specified bits will be set.
-     * 
-     * Ex: setPixelMasked(0b00000011, 0, 255, 0, 0) - set pixels 0, 4, 8, 12, etc. to red.
-     * Ex: setPixelMasked(0b11111000, 0, 0, 0, 255) - set pixels 0-7 to blue.
-     * Ex: setPixelMasked(0b00000010, 0, 0, 255, 0) - set alternating groups of 2 to green.
-     * 
+     *
+     * Ex: fillMatchingAddresses(0b00000011, 0, 255, 0, 0) - set pixels 0, 4, 8, 12, etc. to red.
+     *
+     * Ex: fillMatchingAddresses(0b11111000, 0, 0, 0, 255) - set pixels 0-7 to blue.
+     *
+     * Ex: fillMatchingAddresses(0b00000010, 0, 0, 255, 0) - set alternating groups of 2 to green.
+     *
      * @param mask 8-bit bitmask indicating which address bits will be checked.
-     * @param index 8-bit address of the first pixel to be set.
+     * @param address 8-bit address of the first pixel to be set.
      * @param r Red value (0-255)
      * @param g Green value (0-255)
      * @param b Blue value (0-255)
      */
-    void setPixelMasked(uint8_t mask, uint8_t index, uint8_t r, uint8_t g, uint8_t b);
+    void fillMatchingAddresses(uint8_t mask, uint8_t address, uint8_t r, uint8_t g, uint8_t b);
     /**
-     * Sets a specific pixel to a specific color.
-     * @param index 8-bit address of the pixel to be set.
+     * @brief Sets a specific pixel to a specific color.
+     *
+     * @note Blocks if a previous transmission is still in progress.
+     * Use transmitDone() to avoid blocking.
+     *
+     * @param address 8-bit address of the pixel to be set.
      * @param r Red value (0-255)
      * @param g Green value (0-255)
      * @param b Blue value (0-255)
      */
-    void setPixelColor(uint8_t index, uint8_t r, uint8_t g, uint8_t b);
+    void writePixel(uint8_t address, uint8_t r, uint8_t g, uint8_t b);
     /**
-     * Fills all pixels with a specific color.
+     * @brief Fills all pixels with a specific color.
+     *
+     * @note Blocks if a previous transmission is still in progress.
+     * Use transmitDone() to avoid blocking.
+     *
      * @param r Red value (0-255)
      * @param g Green value (0-255)
      * @param b Blue value (0-255)
      */
-    void fill(uint8_t r, uint8_t g, uint8_t b);
+    void fillAll(uint8_t r, uint8_t g, uint8_t b);
     /**
-     * Creates random groups and sets them to a specific color.
-     * 
+     * @brief Creates random groups and sets them to a specific color.
+     *
+     * @note Blocks if a previous transmission is still in progress.
+     * Use transmitDone() to avoid blocking.
+     *
      * @details
-     * The mask and index specify which groups of LEDs will be set.
+     * The mask and address specify which groups of LEDs will be set.
      * The groups are decided on the fly by the LEDs when the first random command
      * is executed. The same group can be addressed multiple times using the same
-     * mask and index.
-     * Sending a fill command will reset the random groups.
-     * 
-     * Only the last 4 bits of the mask and index are used.
-     * 
-     * Ex: 
-     *    setRandom(0b0001, 0b0000, 255, 0, 0); - Sets random 50% of the string to red.
-     *    setRandom(0b0001, 0b0001, 0, 255, 0); - Sets the other 50% to green.
-     * 
-     * See example project Random for more examples. 
-     * 
+     * mask and address.
+     * Sending a fillAll command will reset the random groups.
+     *
+     * Only the last 4 bits of the mask and address are used.
+     *
+     * Ex:
+     *
+     *    fillRandomGroups(0b0001, 0b0000, 255, 0, 0); - Sets random 50% of the string to red.
+     *
+     *    fillRandomGroups(0b0001, 0b0001, 0, 255, 0); - Sets the other 50% to green.
+     *
+     * See example project Random for more examples.
+     *
      * @param mask 4-bit bitmask indicating which group bits will be checked.
-     * @param index 4-bit address indicating the group to be addressed.
+     * @param address 4-bit address indicating the group to be addressed.
      * @param r Red value (0-255)
      * @param g Green value (0-255)
      * @param b Blue value (0-255)
      */
-    void setRandom(uint8_t mask, uint8_t index, uint8_t r, uint8_t g, uint8_t b);
+    void fillRandomGroups(uint8_t mask, uint8_t address, uint8_t r, uint8_t g, uint8_t b);
     /**
-     * @warning ADVANCED FUNCTIONALITY
-     * These bits control undocumented behavior and may cause unexpected results.
-     * 
-     * Sets the last 3 bits of the command byte, which are configurable flags.
-     * It is unclear what exactly these bits do.
-     * 
+     * @warning Advanced functionality.
+     * Improper usage may cause undefined or undocumented behavior.
+     *
+     * @brief Sets the last 3 bits of the command byte, which are configurable flags.
+     *
+     * It is not known what these flags do, but they are included for completeness.
+     *
      * @param flagByte 3-bit value containing the flags to use.
      */
     void setFlags(uint8_t flagByte);
+    /**
+     * @brief Checks if the previous transmission has completed.
+     *
+     * If this method returns false, calling any command that sends
+     * data will block until the previous transmission has finished.
+     *
+     * @return true if no transmission is in progress, false otherwise.
+     */
+    bool transmitDone();
     /**
      * Destructor for the DOPLED class.
      * Cleans up the RMT channel and encoder.
@@ -175,6 +202,7 @@ private:
 
     uint8_t _pin;
     bool _initialized = false;
+    bool _txDone = true;
     rmt_channel_handle_t led_chan = NULL;
     rmt_encoder_handle_t dopled_encoder = NULL;
     rmt_transmit_config_t tx_config;
@@ -265,6 +293,11 @@ private:
     }
 
     esp_err_t rmt_new_dopled_encoder(rmt_encoder_handle_t *ret_encoder);
+
+    friend bool dopled_tx_done_callback(
+        rmt_channel_handle_t,
+        const rmt_tx_done_event_data_t *,
+        void *);
 };
 
 #endif

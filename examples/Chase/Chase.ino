@@ -7,14 +7,14 @@ DOPLED myString(LED_PIN);
 
 void setup() {
     myString.begin();
-    myString.fill(0,0,0);
+    myString.fillAll(0,0,0);
 }
 
 void loop() {
-    myString.setPixelColor(0, 255, 0, 0);
-    myString.setPixelColor(NUM_LEDS-1, 0, 0, 0);
+    myString.writePixel(0, 255, 0, 0);
+    myString.writePixel(NUM_LEDS-1, 0, 0, 0);
     for (uint16_t i=1; i<NUM_LEDS; i++) {
-        myString.setPixelColor(i, 255, 0, 0);
-        myString.setPixelColor(i-1, 0, 0, 0);
+        myString.writePixel(i, 255, 0, 0);
+        myString.writePixel(i-1, 0, 0, 0);
     }
 }

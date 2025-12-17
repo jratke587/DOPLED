@@ -13,6 +13,17 @@
 
 #include <DOPLED.h>
 
+bool dopled_tx_done_callback(
+    rmt_channel_handle_t channel,
+    const rmt_tx_done_event_data_t *edata,
+    void *user_ctx)
+{
+  DOPLED *self = static_cast<DOPLED *>(user_ctx);
+  self->_txDone = true;
+
+  return false;
+}
+
 DOPLED::DOPLED(uint8_t pin, uint8_t timeBase_us)
 {
   _pin = pin;
@@ -37,6 +48,12 @@ DOPLED::DOPLED(uint8_t pin, uint8_t timeBase_us)
   ESP_ERROR_CHECK(rmt_new_tx_channel(&tx_chan_config, &led_chan));
 
   ESP_ERROR_CHECK(rmt_new_dopled_encoder(&dopled_encoder));
+
+  rmt_tx_event_callbacks_t cbs = {
+      .on_trans_done = dopled_tx_done_callback,
+  };
+
+  ESP_ERROR_CHECK(rmt_tx_register_event_callbacks(led_chan, &cbs, this));
 }
 
 DOPLED::DOPLED(uint8_t pin) : DOPLED(pin, DEFAULT_TIMING_BASE_US) {}
@@ -138,6 +155,8 @@ void DOPLED::sendRaw(uint8_t *data, size_t size)
   // Wait for previous packets to finish sending
   ESP_ERROR_CHECK(rmt_tx_wait_all_done(led_chan, portMAX_DELAY));
 
+  _txDone = false;
+
   ESP_ERROR_CHECK(rmt_transmit(
       led_chan,
       dopled_encoder,
@@ -146,12 +165,12 @@ void DOPLED::sendRaw(uint8_t *data, size_t size)
       &tx_config));
 }
 
-void DOPLED::setPixelMasked(uint8_t mask, uint8_t index, uint8_t r, uint8_t g, uint8_t b)
+void DOPLED::fillMatchingAddresses(uint8_t mask, uint8_t address, uint8_t r, uint8_t g, uint8_t b)
 {
   uint8_t pkt[6];
   pkt[0] = _setCommand;
   pkt[1] = mask;
-  pkt[2] = index;
+  pkt[2] = address;
   pkt[3] = r;
   pkt[4] = g;
   pkt[5] = b;
@@ -159,12 +178,12 @@ void DOPLED::setPixelMasked(uint8_t mask, uint8_t index, uint8_t r, uint8_t g, u
   sendRaw(pkt, sizeof(pkt));
 };
 
-void DOPLED::setPixelColor(uint8_t index, uint8_t r, uint8_t g, uint8_t b)
+void DOPLED::writePixel(uint8_t address, uint8_t r, uint8_t g, uint8_t b)
 {
-  setPixelMasked(0xFF, index, r, g, b);
+  fillMatchingAddresses(0xFF, address, r, g, b);
 };
 
-void DOPLED::fill(uint8_t r, uint8_t g, uint8_t b)
+void DOPLED::fillAll(uint8_t r, uint8_t g, uint8_t b)
 {
   uint8_t pkt[4];
   pkt[0] = _fillCommand;
@@ -175,11 +194,11 @@ void DOPLED::fill(uint8_t r, uint8_t g, uint8_t b)
   sendRaw(pkt, sizeof(pkt));
 };
 
-void DOPLED::setRandom(uint8_t mask, uint8_t index, uint8_t r, uint8_t g, uint8_t b)
+void DOPLED::fillRandomGroups(uint8_t mask, uint8_t address, uint8_t r, uint8_t g, uint8_t b)
 {
   uint8_t pkt[5];
   pkt[0] = _randFillCommand;
-  pkt[1] = ((mask & 0x0F) << 4) | (index & 0x0F);
+  pkt[1] = ((mask & 0x0F) << 4) | (address & 0x0F);
   pkt[2] = r;
   pkt[3] = g;
   pkt[4] = b;
@@ -193,6 +212,11 @@ void DOPLED::setFlags(uint8_t flagByte)
   _fillCommand = (_fillCommand & 0b11111000) | (flagByte & 0b00000111);
   _randFillCommand = (_randFillCommand & 0b11111000) | (flagByte & 0b00000111);
 };
+
+bool DOPLED::transmitDone()
+{
+  return _txDone;
+}
 
 DOPLED::~DOPLED()
 {
