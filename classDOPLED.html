@@ -11,13 +11,16 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -31,6 +34,18 @@
    </div>
    <div id="projectbrief">ESP32 Library for driving 24-29V low speed Data Over Power LED Sets</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -47,34 +62,11 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 $(function() { codefold.init(0); });
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search',true);
-  $(function() { init_search(); });
-});
+$(function(){ initResizable(false); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('classDOPLED.html',''); initResizable(true); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -96,9 +88,12 @@ $(function(){initNavTree('classDOPLED.html',''); initResizable(true); });
 </div>
 </div>
 
+</div><!-- top -->
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classDOPLED-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">DOPLED Class Reference</div></div>
 </div><!--header-->
@@ -112,31 +107,47 @@ $(function(){initNavTree('classDOPLED.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a22831951c123906e2b27af5e442304b8" id="r_a22831951c123906e2b27af5e442304b8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22831951c123906e2b27af5e442304b8">DOPLED</a> (uint8_t pin, uint8_t timeBase_us)</td></tr>
+<tr class="memdesc:a22831951c123906e2b27af5e442304b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="classDOPLED.html" title="Driver for Data Over Power addressable LEDs.">DOPLED</a> Object with a specific timebase.  <br /></td></tr>
 <tr class="separator:a22831951c123906e2b27af5e442304b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abad2578e90460a61a3ae9724515fb3f8" id="r_abad2578e90460a61a3ae9724515fb3f8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abad2578e90460a61a3ae9724515fb3f8">DOPLED</a> (uint8_t pin)</td></tr>
+<tr class="memdesc:abad2578e90460a61a3ae9724515fb3f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="classDOPLED.html" title="Driver for Data Over Power addressable LEDs.">DOPLED</a> Object.  <br /></td></tr>
 <tr class="separator:abad2578e90460a61a3ae9724515fb3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2d8657c51d0a063b70600ea395fd2c4" id="r_af2d8657c51d0a063b70600ea395fd2c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2d8657c51d0a063b70600ea395fd2c4">begin</a> ()</td></tr>
+<tr class="memdesc:af2d8657c51d0a063b70600ea395fd2c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables the ESP32's RMT output.  <br /></td></tr>
 <tr class="separator:af2d8657c51d0a063b70600ea395fd2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a786340b6df36973f242a9a13694882b7" id="r_a786340b6df36973f242a9a13694882b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a786340b6df36973f242a9a13694882b7">end</a> ()</td></tr>
+<tr class="memdesc:a786340b6df36973f242a9a13694882b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables the ESP32's RMT output and set the pin LOW.  <br /></td></tr>
 <tr class="separator:a786340b6df36973f242a9a13694882b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9eb78f7c7d1d5f6bf44f5e32ac7a3510" id="r_a9eb78f7c7d1d5f6bf44f5e32ac7a3510"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9eb78f7c7d1d5f6bf44f5e32ac7a3510">sendRaw</a> (uint8_t *data, size_t size)</td></tr>
 <tr class="separator:a9eb78f7c7d1d5f6bf44f5e32ac7a3510"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b83b5690aa5627e7e5c8994e1dbb553" id="r_a0b83b5690aa5627e7e5c8994e1dbb553"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b83b5690aa5627e7e5c8994e1dbb553">setPixelMasked</a> (uint8_t mask, uint8_t index, uint8_t r, uint8_t g, uint8_t b)</td></tr>
-<tr class="separator:a0b83b5690aa5627e7e5c8994e1dbb553"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22072c11d8c671d8949bc1ffbff60b41" id="r_a22072c11d8c671d8949bc1ffbff60b41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22072c11d8c671d8949bc1ffbff60b41">setPixelColor</a> (uint8_t index, uint8_t r, uint8_t g, uint8_t b)</td></tr>
-<tr class="separator:a22072c11d8c671d8949bc1ffbff60b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dc3bfdab285356508252638f3a399f0" id="r_a8dc3bfdab285356508252638f3a399f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dc3bfdab285356508252638f3a399f0">fill</a> (uint8_t r, uint8_t g, uint8_t b)</td></tr>
-<tr class="separator:a8dc3bfdab285356508252638f3a399f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af54523afe3e86ba803342f9210bde5e4" id="r_af54523afe3e86ba803342f9210bde5e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af54523afe3e86ba803342f9210bde5e4">setRandom</a> (uint8_t mask, uint8_t index, uint8_t r, uint8_t g, uint8_t b)</td></tr>
-<tr class="separator:af54523afe3e86ba803342f9210bde5e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6524cea9fe8db586872e04ee4e0fa95" id="r_ad6524cea9fe8db586872e04ee4e0fa95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6524cea9fe8db586872e04ee4e0fa95">fillMatchingAddresses</a> (uint8_t mask, uint8_t address, uint8_t r, uint8_t g, uint8_t b)</td></tr>
+<tr class="separator:ad6524cea9fe8db586872e04ee4e0fa95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aba7b99872eb10defcc4e5e705eb41b" id="r_a2aba7b99872eb10defcc4e5e705eb41b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2aba7b99872eb10defcc4e5e705eb41b">writePixel</a> (uint8_t address, uint8_t r, uint8_t g, uint8_t b)</td></tr>
+<tr class="memdesc:a2aba7b99872eb10defcc4e5e705eb41b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a specific pixel to a specific color.  <br /></td></tr>
+<tr class="separator:a2aba7b99872eb10defcc4e5e705eb41b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8be7b575134303325a3e33c118342dc" id="r_ad8be7b575134303325a3e33c118342dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8be7b575134303325a3e33c118342dc">fillAll</a> (uint8_t r, uint8_t g, uint8_t b)</td></tr>
+<tr class="memdesc:ad8be7b575134303325a3e33c118342dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills all pixels with a specific color.  <br /></td></tr>
+<tr class="separator:ad8be7b575134303325a3e33c118342dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f824dba50ea91a8cb02e3567cede7cf" id="r_a1f824dba50ea91a8cb02e3567cede7cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f824dba50ea91a8cb02e3567cede7cf">fillRandomGroups</a> (uint8_t mask, uint8_t address, uint8_t r, uint8_t g, uint8_t b)</td></tr>
+<tr class="memdesc:a1f824dba50ea91a8cb02e3567cede7cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates random groups and sets them to a specific color.  <br /></td></tr>
+<tr class="separator:a1f824dba50ea91a8cb02e3567cede7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab62aedbc3272888e48d6196b15796f2b" id="r_ab62aedbc3272888e48d6196b15796f2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab62aedbc3272888e48d6196b15796f2b">setFlags</a> (uint8_t flagByte)</td></tr>
+<tr class="memdesc:ab62aedbc3272888e48d6196b15796f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the last 3 bits of the command byte, which are configurable flags.  <br /></td></tr>
 <tr class="separator:ab62aedbc3272888e48d6196b15796f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60cb5fd9820d818777e424d534e1884d" id="r_a60cb5fd9820d818777e424d534e1884d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60cb5fd9820d818777e424d534e1884d">transmitDone</a> ()</td></tr>
+<tr class="memdesc:a60cb5fd9820d818777e424d534e1884d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the previous transmission has completed.  <br /></td></tr>
+<tr class="separator:a60cb5fd9820d818777e424d534e1884d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cbb3351122f38370af63de32fb523a7" id="r_a3cbb3351122f38370af63de32fb523a7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3cbb3351122f38370af63de32fb523a7">~DOPLED</a> ()</td></tr>
 <tr class="separator:a3cbb3351122f38370af63de32fb523a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a4b9b6f13240dc7e5b11dd06448854471" id="r_a4b9b6f13240dc7e5b11dd06448854471"><td class="memItemLeft" align="right" valign="top"><a id="a4b9b6f13240dc7e5b11dd06448854471" name="a4b9b6f13240dc7e5b11dd06448854471"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>dopled_tx_done_callback</b> (rmt_channel_handle_t channel, const rmt_tx_done_event_data_t *edata, void *user_ctx)</td></tr>
+<tr class="separator:a4b9b6f13240dc7e5b11dd06448854471"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Driver for Data Over Power addressable LEDs. </p>
-<p>See <a href="https://github.com/jratke587/DOPLED">https://github.com/jratke587/DOPLED</a> for more information on supported hardware and usage.</p>
 <dl class="section note"><dt>Note</dt><dd>This library only supports ESP32 microcontrollers. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a22831951c123906e2b27af5e442304b8" name="a22831951c123906e2b27af5e442304b8"></a>
@@ -157,7 +168,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a <a class="el" href="classDOPLED.html" title="Driver for Data Over Power addressable LEDs.">DOPLED</a> Object with a specific timebase.</p>
+
+<p>Creates a <a class="el" href="classDOPLED.html" title="Driver for Data Over Power addressable LEDs.">DOPLED</a> Object with a specific timebase. </p>
 <p>The timebase defines the width of each pulse. Different LEDs may tolerate different timings. Typical value is 70-120us. Lower timings allow faster updates but may not work with all LEDs.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -183,9 +195,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a <a class="el" href="classDOPLED.html" title="Driver for Data Over Power addressable LEDs.">DOPLED</a> Object with a specific timebase.</p>
+
+<p>Creates a <a class="el" href="classDOPLED.html" title="Driver for Data Over Power addressable LEDs.">DOPLED</a> Object. </p>
 <dl class="section note"><dt>Note</dt><dd>Uses a default timebase of 70 us. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a22831951c123906e2b27af5e442304b8">DOPLED(uint8_t, uint8_t)</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a22831951c123906e2b27af5e442304b8" title="Creates a DOPLED Object with a specific timebase.">DOPLED(uint8_t, uint8_t)</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pin</td><td>ESP32 output pin </td></tr>
@@ -228,8 +241,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Must be called before sending any data to the LEDs. Calling any pixel or fill function before <a class="el" href="#af2d8657c51d0a063b70600ea395fd2c4">begin()</a> will result in no output.</p>
+
 <p>Enables the ESP32's RMT output. </p>
+<dl class="section note"><dt>Note</dt><dd>Must be called before sending any data to the LEDs. Calling any write or fill method before <a class="el" href="#af2d8657c51d0a063b70600ea395fd2c4" title="Enables the ESP32&#39;s RMT output.">begin()</a> will result in no output. </dd></dl>
 
 </div>
 </div>
@@ -247,18 +261,20 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Disables the ESP32's RMT output and set the pin LOW. DOP LEDs use the same amount of power when displaying black as when displaying white. This function should be called when the LED is off to save power. </p>
+
+<p>Disables the ESP32's RMT output and set the pin LOW. </p>
+<p>DOP LEDs use the same amount of power when displaying black as when displaying white. Call this method when the LEDs are off for long duations to reduce power consumption. </p>
 
 </div>
 </div>
-<a id="a8dc3bfdab285356508252638f3a399f0" name="a8dc3bfdab285356508252638f3a399f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8dc3bfdab285356508252638f3a399f0">&#9670;&#160;</a></span>fill()</h2>
+<a id="ad8be7b575134303325a3e33c118342dc" name="ad8be7b575134303325a3e33c118342dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8be7b575134303325a3e33c118342dc">&#9670;&#160;</a></span>fillAll()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void DOPLED::fill </td>
+          <td class="memname">void DOPLED::fillAll </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
         </tr>
@@ -274,8 +290,117 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Fills all pixels with a specific color. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Fills all pixels with a specific color. </p>
+<dl class="section note"><dt>Note</dt><dd>Blocks if a previous transmission is still in progress. Use <a class="el" href="#a60cb5fd9820d818777e424d534e1884d" title="Checks if the previous transmission has completed.">transmitDone()</a> to avoid blocking.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">r</td><td>Red value (0-255) </td></tr>
+    <tr><td class="paramname">g</td><td>Green value (0-255) </td></tr>
+    <tr><td class="paramname">b</td><td>Blue value (0-255) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad6524cea9fe8db586872e04ee4e0fa95" name="ad6524cea9fe8db586872e04ee4e0fa95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6524cea9fe8db586872e04ee4e0fa95">&#9670;&#160;</a></span>fillMatchingAddresses()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DOPLED::fillMatchingAddresses </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets a group of pixels according to the mask and address.</p>
+<p>The mask determines which bits of the pixel address are checked by the LEDs. Pixels matching the specified bits will be set.</p>
+<p>Ex: fillMatchingAddresses(0b00000011, 0, 255, 0, 0) - set pixels 0, 4, 8, 12, etc. to red.</p>
+<p>Ex: fillMatchingAddresses(0b11111000, 0, 0, 0, 255) - set pixels 0-7 to blue.</p>
+<p>Ex: fillMatchingAddresses(0b00000010, 0, 0, 255, 0) - set alternating groups of 2 to green.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mask</td><td>8-bit bitmask indicating which address bits will be checked. </td></tr>
+    <tr><td class="paramname">address</td><td>8-bit address of the first pixel to be set. </td></tr>
+    <tr><td class="paramname">r</td><td>Red value (0-255) </td></tr>
+    <tr><td class="paramname">g</td><td>Green value (0-255) </td></tr>
+    <tr><td class="paramname">b</td><td>Blue value (0-255) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1f824dba50ea91a8cb02e3567cede7cf" name="a1f824dba50ea91a8cb02e3567cede7cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f824dba50ea91a8cb02e3567cede7cf">&#9670;&#160;</a></span>fillRandomGroups()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DOPLED::fillRandomGroups </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates random groups and sets them to a specific color. </p>
+<dl class="section note"><dt>Note</dt><dd>Blocks if a previous transmission is still in progress. Use <a class="el" href="#a60cb5fd9820d818777e424d534e1884d" title="Checks if the previous transmission has completed.">transmitDone()</a> to avoid blocking.</dd></dl>
+<p>The mask and address specify which groups of LEDs will be set. The groups are decided on the fly by the LEDs when the first random command is executed. The same group can be addressed multiple times using the same mask and address. Sending a fillAll command will reset the random groups.</p>
+<p>Only the last 4 bits of the mask and address are used.</p>
+<p>Ex:</p>
+<p>fillRandomGroups(0b0001, 0b0000, 255, 0, 0); - Sets random 50% of the string to red.</p>
+<p>fillRandomGroups(0b0001, 0b0001, 0, 255, 0); - Sets the other 50% to green.</p>
+<p>See example project Random for more examples.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mask</td><td>4-bit bitmask indicating which group bits will be checked. </td></tr>
+    <tr><td class="paramname">address</td><td>4-bit address indicating the group to be addressed. </td></tr>
     <tr><td class="paramname">r</td><td>Red value (0-255) </td></tr>
     <tr><td class="paramname">g</td><td>Green value (0-255) </td></tr>
     <tr><td class="paramname">b</td><td>Blue value (0-255) </td></tr>
@@ -303,7 +428,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section warning"><dt>Warning</dt><dd>ADVANCED FUNCTIONALITY Improper usage may cause undefined behavior.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Advanced functionality. Improper usage may cause undefined or undocumented behavior.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Blocks if a previous transmission is still in progress. Use <a class="el" href="#a60cb5fd9820d818777e424d534e1884d" title="Checks if the previous transmission has completed.">transmitDone()</a> to avoid blocking.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>Byte array containing the raw data to be sent. </td></tr>
@@ -328,8 +454,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section warning"><dt>Warning</dt><dd>ADVANCED FUNCTIONALITY These bits control undocumented behavior and may cause unexpected results.</dd></dl>
-<p>Sets the last 3 bits of the command byte, which are configurable flags. It is unclear what exactly these bits do.</p>
+
+<p>Sets the last 3 bits of the command byte, which are configurable flags. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Advanced functionality. Improper usage may cause undefined or undocumented behavior.</dd></dl>
+<p>It is not known what these flags do, but they are included for completeness.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">flagByte</td><td>3-bit value containing the flags to use. </td></tr>
@@ -339,16 +467,37 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a22072c11d8c671d8949bc1ffbff60b41" name="a22072c11d8c671d8949bc1ffbff60b41"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22072c11d8c671d8949bc1ffbff60b41">&#9670;&#160;</a></span>setPixelColor()</h2>
+<a id="a60cb5fd9820d818777e424d534e1884d" name="a60cb5fd9820d818777e424d534e1884d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60cb5fd9820d818777e424d534e1884d">&#9670;&#160;</a></span>transmitDone()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void DOPLED::setPixelColor </td>
+          <td class="memname">bool DOPLED::transmitDone </td>
           <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the previous transmission has completed. </p>
+<p>If this method returns false, calling any command that sends data will block until the previous transmission has finished.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if no transmission is in progress, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a2aba7b99872eb10defcc4e5e705eb41b" name="a2aba7b99872eb10defcc4e5e705eb41b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2aba7b99872eb10defcc4e5e705eb41b">&#9670;&#160;</a></span>writePixel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DOPLED::writePixel </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -367,109 +516,12 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets a specific pixel to a specific color. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">index</td><td>8-bit address of the pixel to be set. </td></tr>
-    <tr><td class="paramname">r</td><td>Red value (0-255) </td></tr>
-    <tr><td class="paramname">g</td><td>Green value (0-255) </td></tr>
-    <tr><td class="paramname">b</td><td>Blue value (0-255) </td></tr>
-  </table>
-  </dd>
-</dl>
 
-</div>
-</div>
-<a id="a0b83b5690aa5627e7e5c8994e1dbb553" name="a0b83b5690aa5627e7e5c8994e1dbb553"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b83b5690aa5627e7e5c8994e1dbb553">&#9670;&#160;</a></span>setPixelMasked()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void DOPLED::setPixelMasked </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Sets a group of pixels according to the mask and address.</p>
-<p>The mask determines which bits of the pixel address are checked by the LEDs. Pixels matching the specified bits will be set.</p>
-<p>Ex: setPixelMasked(0b00000011, 0, 255, 0, 0) - set pixels 0, 4, 8, 12, etc. to red. Ex: setPixelMasked(0b11111000, 0, 0, 0, 255) - set pixels 0-7 to blue. Ex: setPixelMasked(0b00000010, 0, 0, 255, 0) - set alternating groups of 2 to green.</p>
+<p>Sets a specific pixel to a specific color. </p>
+<dl class="section note"><dt>Note</dt><dd>Blocks if a previous transmission is still in progress. Use <a class="el" href="#a60cb5fd9820d818777e424d534e1884d" title="Checks if the previous transmission has completed.">transmitDone()</a> to avoid blocking.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">mask</td><td>8-bit bitmask indicating which address bits will be checked. </td></tr>
-    <tr><td class="paramname">index</td><td>8-bit address of the first pixel to be set. </td></tr>
-    <tr><td class="paramname">r</td><td>Red value (0-255) </td></tr>
-    <tr><td class="paramname">g</td><td>Green value (0-255) </td></tr>
-    <tr><td class="paramname">b</td><td>Blue value (0-255) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="af54523afe3e86ba803342f9210bde5e4" name="af54523afe3e86ba803342f9210bde5e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af54523afe3e86ba803342f9210bde5e4">&#9670;&#160;</a></span>setRandom()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void DOPLED::setRandom </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>mask</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Creates random groups and sets them to a specific color.</p>
-<p>The mask and index specify which groups of LEDs will be set. The groups are decided on the fly by the LEDs when the first random command is executed. The same group can be addressed multiple times using the same mask and index. Sending a fill command will reset the random groups.</p>
-<p>Only the last 4 bits of the mask and index are used.</p>
-<p>Ex: setRandom(0b0001, 0b0000, 255, 0, 0); - Sets random 50% of the string to red. setRandom(0b0001, 0b0001, 0, 255, 0); - Sets the other 50% to green.</p>
-<p>See example project Random for more examples.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mask</td><td>4-bit bitmask indicating which group bits will be checked. </td></tr>
-    <tr><td class="paramname">index</td><td>4-bit address indicating the group to be addressed. </td></tr>
+    <tr><td class="paramname">address</td><td>8-bit address of the pixel to be set. </td></tr>
     <tr><td class="paramname">r</td><td>Red value (0-255) </td></tr>
     <tr><td class="paramname">g</td><td>Green value (0-255) </td></tr>
     <tr><td class="paramname">b</td><td>Blue value (0-255) </td></tr>
@@ -481,16 +533,13 @@ Public Member Functions</h2></td></tr>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="DOPLED_8h_source.html">DOPLED.h</a></li>
-<li><a class="el" href="DOPLED_8cpp.html">DOPLED.cpp</a></li>
+<li><b>DOPLED.cpp</b></li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="classDOPLED.html">DOPLED</a></li>
-    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
 </body>
 </html>

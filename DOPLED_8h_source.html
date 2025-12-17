@@ -11,13 +11,16 @@
 <script type="text/javascript" src="dynsections.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -31,6 +34,18 @@
    </div>
    <div id="projectbrief">ESP32 Library for driving 24-29V low speed Data Over Power LED Sets</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -47,34 +62,13 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 $(function() { codefold.init(0); });
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search',true);
-  $(function() { init_search(); });
-});
-/* @license-end */
-</script>
-<div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
+<div id="doc-content">
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('DOPLED_8h_source.html',''); initResizable(true); });
+$(function(){ initResizable(false); });
 /* @license-end */
 </script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -100,174 +94,179 @@ $(function(){initNavTree('DOPLED_8h_source.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">DOPLED.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="DOPLED_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#ifndef DOPLED_H</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#define DOPLED_H</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;Arduino.h&quot;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;driver/rmt_tx.h&quot;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classDOPLED.html">   28</a></span><span class="keyword">class </span><a class="code hl_class" href="classDOPLED.html">DOPLED</a></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_function" href="classDOPLED.html#a22831951c123906e2b27af5e442304b8">DOPLED</a>(uint8_t pin, uint8_t timeBase_us);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_function" href="classDOPLED.html#a22831951c123906e2b27af5e442304b8">DOPLED</a>(uint8_t pin);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#af2d8657c51d0a063b70600ea395fd2c4">begin</a>();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#a786340b6df36973f242a9a13694882b7">end</a>();</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#a9eb78f7c7d1d5f6bf44f5e32ac7a3510">sendRaw</a>(uint8_t *data, <span class="keywordtype">size_t</span> size);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#a0b83b5690aa5627e7e5c8994e1dbb553">setPixelMasked</a>(uint8_t mask, uint8_t index, uint8_t r, uint8_t g, uint8_t b);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#a22072c11d8c671d8949bc1ffbff60b41">setPixelColor</a>(uint8_t index, uint8_t r, uint8_t g, uint8_t b);</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#a8dc3bfdab285356508252638f3a399f0">fill</a>(uint8_t r, uint8_t g, uint8_t b);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#af54523afe3e86ba803342f9210bde5e4">setRandom</a>(uint8_t mask, uint8_t index, uint8_t r, uint8_t g, uint8_t b);</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#ab62aedbc3272888e48d6196b15796f2b">setFlags</a>(uint8_t flagByte);</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <a class="code hl_function" href="classDOPLED.html#a3cbb3351122f38370af63de32fb523a7">~DOPLED</a>();</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> RMT_RESOLUTION_HZ = 1000000;</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> RMT_TICK_US = (RMT_RESOLUTION_HZ / 1000000);</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> DEFAULT_TIMING_BASE_US = 70;</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> T0L = 1 * RMT_TICK_US;</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> T0H = 1 * RMT_TICK_US;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> T1L = 1 * RMT_TICK_US;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> T1H = 3 * RMT_TICK_US;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> PRE_PKT_L = 1 * RMT_TICK_US;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> INTER_PKT_H = 7 * RMT_TICK_US;</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> timebase;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    uint8_t _setCommand = 0b00110000;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    uint8_t _fillCommand = 0b00011000;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    uint8_t _randFillCommand = 0b01001000;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keyword">struct </span>dopled_encoder_t</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    {</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        rmt_encoder_t base;</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        rmt_encoder_t *bytes_encoder;</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        rmt_encoder_t *copy_encoder;</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <span class="keywordtype">int</span> state;</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        rmt_symbol_word_t leading_symbol;</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        rmt_symbol_word_t ending_symbol;</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    };</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    uint8_t _pin;</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordtype">bool</span> _initialized = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    rmt_channel_handle_t led_chan = NULL;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    rmt_encoder_handle_t dopled_encoder = NULL;</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    rmt_transmit_config_t tx_config;</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keyword">static</span> <span class="keywordtype">size_t</span> rmt_encode_dopled(</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        rmt_encoder_t *encoder,</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        rmt_channel_handle_t channel,</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <span class="keyword">const</span> <span class="keywordtype">void</span> *primary_data,</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <span class="keywordtype">size_t</span> data_size,</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        rmt_encode_state_t *ret_state)</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    {</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        dopled_encoder_t *led_encoder = __containerof(encoder, dopled_encoder_t, base);</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        rmt_encoder_handle_t bytes_encoder = led_encoder-&gt;bytes_encoder;</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        rmt_encoder_handle_t copy_encoder = led_encoder-&gt;copy_encoder;</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        rmt_encode_state_t session_state = RMT_ENCODING_RESET;</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        rmt_encode_state_t state = RMT_ENCODING_RESET;</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="keywordtype">size_t</span> encoded_symbols = 0;</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="keywordflow">switch</span> (led_encoder-&gt;state)</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        {</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="keywordflow">case</span> 0: <span class="comment">// leading symbol</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>            encoded_symbols += copy_encoder-&gt;encode(</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                copy_encoder,</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                channel,</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                &amp;led_encoder-&gt;leading_symbol,</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                <span class="keyword">sizeof</span>(rmt_symbol_word_t),</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                &amp;session_state);</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            <span class="keywordflow">if</span> (session_state &amp; RMT_ENCODING_COMPLETE)</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            {</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>                led_encoder-&gt;state = 1; <span class="comment">// we can only switch to the next state when the current encoder finished</span></div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            }</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            <span class="keywordflow">if</span> (session_state &amp; RMT_ENCODING_MEM_FULL)</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>            {</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>                state = RMT_ENCODING_MEM_FULL;</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>                <span class="keywordflow">goto</span> out; <span class="comment">// yield if there is no free space to put other encoding artifacts</span></div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>            }</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        <span class="comment">// fall-through</span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <span class="keywordflow">case</span> 1: <span class="comment">// send data</span></div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>            encoded_symbols += bytes_encoder-&gt;encode(bytes_encoder, channel, primary_data, data_size, &amp;session_state);</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>            <span class="keywordflow">if</span> (session_state &amp; RMT_ENCODING_COMPLETE)</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>            {</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>                led_encoder-&gt;state = 2; <span class="comment">// switch to next state when current encoding session finished</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>            }</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>            <span class="keywordflow">if</span> (session_state &amp; RMT_ENCODING_MEM_FULL)</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            {</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>                state = RMT_ENCODING_MEM_FULL;</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>                <span class="keywordflow">goto</span> out; <span class="comment">// yield if there is no free space to put other encoding artifacts</span></div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            }</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="comment">// fall-through</span></div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <span class="keywordflow">case</span> 2: <span class="comment">// send reset code</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            encoded_symbols += copy_encoder-&gt;encode(</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>                copy_encoder,</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>                channel,</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>                &amp;led_encoder-&gt;ending_symbol,</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>                <span class="keyword">sizeof</span>(rmt_symbol_word_t),</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>                &amp;session_state);</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>            <span class="keywordflow">if</span> (session_state &amp; RMT_ENCODING_COMPLETE)</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>            {</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>                led_encoder-&gt;state = RMT_ENCODING_RESET; <span class="comment">// back to the initial encoding session</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>                state = RMT_ENCODING_COMPLETE;           <span class="comment">// telling the caller the encoding has finished</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            }</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>            <span class="keywordflow">if</span> (session_state &amp; RMT_ENCODING_MEM_FULL)</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            {</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>                state = RMT_ENCODING_MEM_FULL;</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>                <span class="keywordflow">goto</span> out; <span class="comment">// yield if there is no free space to put other encoding artifacts</span></div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            }</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        }</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    out:</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        *ret_state = state;</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="keywordflow">return</span> encoded_symbols;</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    }</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="keyword">static</span> esp_err_t rmt_del_dopled_encoder(rmt_encoder_t *encoder)</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    {</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        dopled_encoder_t *led_encoder = __containerof(encoder, dopled_encoder_t, base);</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        rmt_del_encoder(led_encoder-&gt;bytes_encoder);</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        rmt_del_encoder(led_encoder-&gt;copy_encoder);</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        free(led_encoder);</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="keywordflow">return</span> ESP_OK;</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    }</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <span class="keyword">static</span> esp_err_t rmt_dopled_encoder_reset(rmt_encoder_t *encoder)</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    {</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        dopled_encoder_t *led_encoder = __containerof(encoder, dopled_encoder_t, base);</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        rmt_encoder_reset(led_encoder-&gt;bytes_encoder);</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        rmt_encoder_reset(led_encoder-&gt;copy_encoder);</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        led_encoder-&gt;state = RMT_ENCODING_RESET;</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keywordflow">return</span> ESP_OK;</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    }</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    esp_err_t rmt_new_dopled_encoder(rmt_encoder_handle_t *ret_encoder);</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>};</div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classDOPLED.html">   26</a></span><span class="keyword">class </span><a class="code hl_class" href="classDOPLED.html">DOPLED</a></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_function" href="classDOPLED.html#a22831951c123906e2b27af5e442304b8">DOPLED</a>(uint8_t pin, uint8_t timeBase_us);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_function" href="classDOPLED.html#a22831951c123906e2b27af5e442304b8">DOPLED</a>(uint8_t pin);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#af2d8657c51d0a063b70600ea395fd2c4">begin</a>();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#a786340b6df36973f242a9a13694882b7">end</a>();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#a9eb78f7c7d1d5f6bf44f5e32ac7a3510">sendRaw</a>(uint8_t *data, <span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#ad6524cea9fe8db586872e04ee4e0fa95">fillMatchingAddresses</a>(uint8_t mask, uint8_t address, uint8_t r, uint8_t g, uint8_t b);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#a2aba7b99872eb10defcc4e5e705eb41b">writePixel</a>(uint8_t address, uint8_t r, uint8_t g, uint8_t b);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#ad8be7b575134303325a3e33c118342dc">fillAll</a>(uint8_t r, uint8_t g, uint8_t b);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#a1f824dba50ea91a8cb02e3567cede7cf">fillRandomGroups</a>(uint8_t mask, uint8_t address, uint8_t r, uint8_t g, uint8_t b);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDOPLED.html#ab62aedbc3272888e48d6196b15796f2b">setFlags</a>(uint8_t flagByte);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classDOPLED.html#a60cb5fd9820d818777e424d534e1884d">transmitDone</a>();</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <a class="code hl_function" href="classDOPLED.html#a3cbb3351122f38370af63de32fb523a7">~DOPLED</a>();</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> RMT_RESOLUTION_HZ = 1000000;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> RMT_TICK_US = (RMT_RESOLUTION_HZ / 1000000);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> DEFAULT_TIMING_BASE_US = 70;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> T0L = 1 * RMT_TICK_US;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> T0H = 1 * RMT_TICK_US;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> T1L = 1 * RMT_TICK_US;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> T1H = 3 * RMT_TICK_US;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> PRE_PKT_L = 1 * RMT_TICK_US;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> INTER_PKT_H = 7 * RMT_TICK_US;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> timebase;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    uint8_t _setCommand = 0b00110000;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    uint8_t _fillCommand = 0b00011000;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    uint8_t _randFillCommand = 0b01001000;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keyword">struct </span>dopled_encoder_t</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    {</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        rmt_encoder_t base;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        rmt_encoder_t *bytes_encoder;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        rmt_encoder_t *copy_encoder;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="keywordtype">int</span> state;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        rmt_symbol_word_t leading_symbol;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        rmt_symbol_word_t ending_symbol;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    };</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    uint8_t _pin;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keywordtype">bool</span> _initialized = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordtype">bool</span> _txDone = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    rmt_channel_handle_t led_chan = NULL;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    rmt_encoder_handle_t dopled_encoder = NULL;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    rmt_transmit_config_t tx_config;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keyword">static</span> <span class="keywordtype">size_t</span> rmt_encode_dopled(</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        rmt_encoder_t *encoder,</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        rmt_channel_handle_t channel,</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        <span class="keyword">const</span> <span class="keywordtype">void</span> *primary_data,</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <span class="keywordtype">size_t</span> data_size,</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        rmt_encode_state_t *ret_state)</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    {</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        dopled_encoder_t *led_encoder = __containerof(encoder, dopled_encoder_t, base);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        rmt_encoder_handle_t bytes_encoder = led_encoder-&gt;bytes_encoder;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        rmt_encoder_handle_t copy_encoder = led_encoder-&gt;copy_encoder;</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        rmt_encode_state_t session_state = RMT_ENCODING_RESET;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        rmt_encode_state_t state = RMT_ENCODING_RESET;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="keywordtype">size_t</span> encoded_symbols = 0;</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <span class="keywordflow">switch</span> (led_encoder-&gt;state)</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        {</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="keywordflow">case</span> 0: <span class="comment">// leading symbol</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            encoded_symbols += copy_encoder-&gt;encode(</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>                copy_encoder,</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>                channel,</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>                &amp;led_encoder-&gt;leading_symbol,</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>                <span class="keyword">sizeof</span>(rmt_symbol_word_t),</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>                &amp;session_state);</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>            <span class="keywordflow">if</span> (session_state &amp; RMT_ENCODING_COMPLETE)</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>            {</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>                led_encoder-&gt;state = 1; <span class="comment">// we can only switch to the next state when the current encoder finished</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>            }</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>            <span class="keywordflow">if</span> (session_state &amp; RMT_ENCODING_MEM_FULL)</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            {</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>                state = RMT_ENCODING_MEM_FULL;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>                <span class="keywordflow">goto</span> out; <span class="comment">// yield if there is no free space to put other encoding artifacts</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>            }</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="comment">// fall-through</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        <span class="keywordflow">case</span> 1: <span class="comment">// send data</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            encoded_symbols += bytes_encoder-&gt;encode(bytes_encoder, channel, primary_data, data_size, &amp;session_state);</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            <span class="keywordflow">if</span> (session_state &amp; RMT_ENCODING_COMPLETE)</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>            {</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>                led_encoder-&gt;state = 2; <span class="comment">// switch to next state when current encoding session finished</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>            }</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>            <span class="keywordflow">if</span> (session_state &amp; RMT_ENCODING_MEM_FULL)</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>            {</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>                state = RMT_ENCODING_MEM_FULL;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>                <span class="keywordflow">goto</span> out; <span class="comment">// yield if there is no free space to put other encoding artifacts</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            }</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        <span class="comment">// fall-through</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        <span class="keywordflow">case</span> 2: <span class="comment">// send reset code</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>            encoded_symbols += copy_encoder-&gt;encode(</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>                copy_encoder,</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>                channel,</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>                &amp;led_encoder-&gt;ending_symbol,</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>                <span class="keyword">sizeof</span>(rmt_symbol_word_t),</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>                &amp;session_state);</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>            <span class="keywordflow">if</span> (session_state &amp; RMT_ENCODING_COMPLETE)</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>            {</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>                led_encoder-&gt;state = RMT_ENCODING_RESET; <span class="comment">// back to the initial encoding session</span></div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>                state = RMT_ENCODING_COMPLETE;           <span class="comment">// telling the caller the encoding has finished</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>            }</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>            <span class="keywordflow">if</span> (session_state &amp; RMT_ENCODING_MEM_FULL)</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>            {</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>                state = RMT_ENCODING_MEM_FULL;</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>                <span class="keywordflow">goto</span> out; <span class="comment">// yield if there is no free space to put other encoding artifacts</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            }</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        }</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    out:</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        *ret_state = state;</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <span class="keywordflow">return</span> encoded_symbols;</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    }</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    <span class="keyword">static</span> esp_err_t rmt_del_dopled_encoder(rmt_encoder_t *encoder)</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    {</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        dopled_encoder_t *led_encoder = __containerof(encoder, dopled_encoder_t, base);</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        rmt_del_encoder(led_encoder-&gt;bytes_encoder);</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        rmt_del_encoder(led_encoder-&gt;copy_encoder);</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        free(led_encoder);</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    }</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    <span class="keyword">static</span> esp_err_t rmt_dopled_encoder_reset(rmt_encoder_t *encoder)</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    {</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        dopled_encoder_t *led_encoder = __containerof(encoder, dopled_encoder_t, base);</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        rmt_encoder_reset(led_encoder-&gt;bytes_encoder);</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        rmt_encoder_reset(led_encoder-&gt;copy_encoder);</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        led_encoder-&gt;state = RMT_ENCODING_RESET;</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    }</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    esp_err_t rmt_new_dopled_encoder(rmt_encoder_handle_t *ret_encoder);</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    <span class="keyword">friend</span> <span class="keywordtype">bool</span> dopled_tx_done_callback(</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        rmt_channel_handle_t,</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="keyword">const</span> rmt_tx_done_event_data_t *,</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        <span class="keywordtype">void</span> *);</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>};</div>
 </div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassDOPLED_html"><div class="ttname"><a href="classDOPLED.html">DOPLED</a></div><div class="ttdoc">Driver for Data Over Power addressable LEDs.</div><div class="ttdef"><b>Definition</b> DOPLED.h:29</div></div>
-<div class="ttc" id="aclassDOPLED_html_a0b83b5690aa5627e7e5c8994e1dbb553"><div class="ttname"><a href="classDOPLED.html#a0b83b5690aa5627e7e5c8994e1dbb553">DOPLED::setPixelMasked</a></div><div class="ttdeci">void setPixelMasked(uint8_t mask, uint8_t index, uint8_t r, uint8_t g, uint8_t b)</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:149</div></div>
-<div class="ttc" id="aclassDOPLED_html_a22072c11d8c671d8949bc1ffbff60b41"><div class="ttname"><a href="classDOPLED.html#a22072c11d8c671d8949bc1ffbff60b41">DOPLED::setPixelColor</a></div><div class="ttdeci">void setPixelColor(uint8_t index, uint8_t r, uint8_t g, uint8_t b)</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:162</div></div>
-<div class="ttc" id="aclassDOPLED_html_a22831951c123906e2b27af5e442304b8"><div class="ttname"><a href="classDOPLED.html#a22831951c123906e2b27af5e442304b8">DOPLED::DOPLED</a></div><div class="ttdeci">DOPLED(uint8_t pin, uint8_t timeBase_us)</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:16</div></div>
-<div class="ttc" id="aclassDOPLED_html_a3cbb3351122f38370af63de32fb523a7"><div class="ttname"><a href="classDOPLED.html#a3cbb3351122f38370af63de32fb523a7">DOPLED::~DOPLED</a></div><div class="ttdeci">~DOPLED()</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:197</div></div>
-<div class="ttc" id="aclassDOPLED_html_a786340b6df36973f242a9a13694882b7"><div class="ttname"><a href="classDOPLED.html#a786340b6df36973f242a9a13694882b7">DOPLED::end</a></div><div class="ttdeci">void end()</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:110</div></div>
-<div class="ttc" id="aclassDOPLED_html_a8dc3bfdab285356508252638f3a399f0"><div class="ttname"><a href="classDOPLED.html#a8dc3bfdab285356508252638f3a399f0">DOPLED::fill</a></div><div class="ttdeci">void fill(uint8_t r, uint8_t g, uint8_t b)</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:167</div></div>
-<div class="ttc" id="aclassDOPLED_html_a9eb78f7c7d1d5f6bf44f5e32ac7a3510"><div class="ttname"><a href="classDOPLED.html#a9eb78f7c7d1d5f6bf44f5e32ac7a3510">DOPLED::sendRaw</a></div><div class="ttdeci">void sendRaw(uint8_t *data, size_t size)</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:131</div></div>
-<div class="ttc" id="aclassDOPLED_html_ab62aedbc3272888e48d6196b15796f2b"><div class="ttname"><a href="classDOPLED.html#ab62aedbc3272888e48d6196b15796f2b">DOPLED::setFlags</a></div><div class="ttdeci">void setFlags(uint8_t flagByte)</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:190</div></div>
-<div class="ttc" id="aclassDOPLED_html_af2d8657c51d0a063b70600ea395fd2c4"><div class="ttname"><a href="classDOPLED.html#af2d8657c51d0a063b70600ea395fd2c4">DOPLED::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:98</div></div>
-<div class="ttc" id="aclassDOPLED_html_af54523afe3e86ba803342f9210bde5e4"><div class="ttname"><a href="classDOPLED.html#af54523afe3e86ba803342f9210bde5e4">DOPLED::setRandom</a></div><div class="ttdeci">void setRandom(uint8_t mask, uint8_t index, uint8_t r, uint8_t g, uint8_t b)</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:178</div></div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassDOPLED_html"><div class="ttname"><a href="classDOPLED.html">DOPLED</a></div><div class="ttdoc">Driver for Data Over Power addressable LEDs.</div><div class="ttdef"><b>Definition</b> DOPLED.h:27</div></div>
+<div class="ttc" id="aclassDOPLED_html_a1f824dba50ea91a8cb02e3567cede7cf"><div class="ttname"><a href="classDOPLED.html#a1f824dba50ea91a8cb02e3567cede7cf">DOPLED::fillRandomGroups</a></div><div class="ttdeci">void fillRandomGroups(uint8_t mask, uint8_t address, uint8_t r, uint8_t g, uint8_t b)</div><div class="ttdoc">Creates random groups and sets them to a specific color.</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:197</div></div>
+<div class="ttc" id="aclassDOPLED_html_a22831951c123906e2b27af5e442304b8"><div class="ttname"><a href="classDOPLED.html#a22831951c123906e2b27af5e442304b8">DOPLED::DOPLED</a></div><div class="ttdeci">DOPLED(uint8_t pin, uint8_t timeBase_us)</div><div class="ttdoc">Creates a DOPLED Object with a specific timebase.</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:27</div></div>
+<div class="ttc" id="aclassDOPLED_html_a2aba7b99872eb10defcc4e5e705eb41b"><div class="ttname"><a href="classDOPLED.html#a2aba7b99872eb10defcc4e5e705eb41b">DOPLED::writePixel</a></div><div class="ttdeci">void writePixel(uint8_t address, uint8_t r, uint8_t g, uint8_t b)</div><div class="ttdoc">Sets a specific pixel to a specific color.</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:181</div></div>
+<div class="ttc" id="aclassDOPLED_html_a3cbb3351122f38370af63de32fb523a7"><div class="ttname"><a href="classDOPLED.html#a3cbb3351122f38370af63de32fb523a7">DOPLED::~DOPLED</a></div><div class="ttdeci">~DOPLED()</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:221</div></div>
+<div class="ttc" id="aclassDOPLED_html_a60cb5fd9820d818777e424d534e1884d"><div class="ttname"><a href="classDOPLED.html#a60cb5fd9820d818777e424d534e1884d">DOPLED::transmitDone</a></div><div class="ttdeci">bool transmitDone()</div><div class="ttdoc">Checks if the previous transmission has completed.</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:216</div></div>
+<div class="ttc" id="aclassDOPLED_html_a786340b6df36973f242a9a13694882b7"><div class="ttname"><a href="classDOPLED.html#a786340b6df36973f242a9a13694882b7">DOPLED::end</a></div><div class="ttdeci">void end()</div><div class="ttdoc">Disables the ESP32's RMT output and set the pin LOW.</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:127</div></div>
+<div class="ttc" id="aclassDOPLED_html_a9eb78f7c7d1d5f6bf44f5e32ac7a3510"><div class="ttname"><a href="classDOPLED.html#a9eb78f7c7d1d5f6bf44f5e32ac7a3510">DOPLED::sendRaw</a></div><div class="ttdeci">void sendRaw(uint8_t *data, size_t size)</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:148</div></div>
+<div class="ttc" id="aclassDOPLED_html_ab62aedbc3272888e48d6196b15796f2b"><div class="ttname"><a href="classDOPLED.html#ab62aedbc3272888e48d6196b15796f2b">DOPLED::setFlags</a></div><div class="ttdeci">void setFlags(uint8_t flagByte)</div><div class="ttdoc">Sets the last 3 bits of the command byte, which are configurable flags.</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:209</div></div>
+<div class="ttc" id="aclassDOPLED_html_ad6524cea9fe8db586872e04ee4e0fa95"><div class="ttname"><a href="classDOPLED.html#ad6524cea9fe8db586872e04ee4e0fa95">DOPLED::fillMatchingAddresses</a></div><div class="ttdeci">void fillMatchingAddresses(uint8_t mask, uint8_t address, uint8_t r, uint8_t g, uint8_t b)</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:168</div></div>
+<div class="ttc" id="aclassDOPLED_html_ad8be7b575134303325a3e33c118342dc"><div class="ttname"><a href="classDOPLED.html#ad8be7b575134303325a3e33c118342dc">DOPLED::fillAll</a></div><div class="ttdeci">void fillAll(uint8_t r, uint8_t g, uint8_t b)</div><div class="ttdoc">Fills all pixels with a specific color.</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:186</div></div>
+<div class="ttc" id="aclassDOPLED_html_af2d8657c51d0a063b70600ea395fd2c4"><div class="ttname"><a href="classDOPLED.html#af2d8657c51d0a063b70600ea395fd2c4">DOPLED::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">Enables the ESP32's RMT output.</div><div class="ttdef"><b>Definition</b> DOPLED.cpp:115</div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="DOPLED_8h.html">DOPLED.h</a></li>
-    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
 </body>
 </html>
