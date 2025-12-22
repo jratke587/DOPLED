@@ -95,9 +95,37 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
-<p>ESP32 Library for driving 24-29V low speed Data Over Power LED Sets (i.e. Hello Fairy, Dazzle Bright)</p>
-<p><a href="https://jratke587.github.io/DOPLED/classDOPLED.html">DOPLED Class Reference</a></p>
-<p>Keywords: Hello Fairy; Dazzle Bright; Surplife; 2BM5F-HB-1000COI; Linhai Huanbo Lighting Co., Ltd; 2AKBP-HELLOFAIRY; Shenzhen Hysiry Technology Co., Ltd; Hello Fairy BMSL6; CL-600CC </p>
+<p>The <b><a class="el" href="classDOPLED.html" title="Driver for Data Over Power addressable LEDs.">DOPLED</a></b> library allows you to use an ESP32 to control low-speed Data Over Power (DOP) LED strings, such as those distributed by Hello Fairy and Dazzle Bright. These LEDs are unique since they do not use a data wire and can be wired in series to use higher voltages.</p>
+<p>For detailed reference, check out the <a href="https://jratke587.github.io/DOPLED/classDOPLED.html">DOPLED Class Reference</a>. Example sketches are included with the library.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Supported LEDs</h1>
+<p>This library drives some 2-wire addressable LEDs that send data over the power wires. While part number of these LEDs is not known, they generally have a cloudy white 5mm conical housing. These are NOT the same LEDs used in Twinkly products.</p>
+<p><img src="https://github.com/user-attachments/assets/d2b60ca7-b27e-48a6-8158-b97da1885c1e" alt="Photo of an indiviual LED from the string" width="1008" height="756" class="inline"/></p>
+<p>These lights are often sold in strings using the 'Hello Fairy', 'Dazzle Bright', or 'Surplife' app.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+LED Behavior</h1>
+<p>While these LEDs can be addressed individually, strings typically contain multiple LEDs that share the same address which means they are not addressable in the traditional sense. For example:</p><ul>
+<li>Hello Fairy 200 string has 25 addresses repeating sequentially (0, 1, ..., 24, 0, 1, ...)</li>
+<li>Dazzle Bright 500 string has 125 addresses in adjacent groups of 4 (0, 0, 0, 0, 1, 1, 1, 1, ... 124, 124, 124, 124).</li>
+</ul>
+<p>There are 4 ways to control these LEDS:</p><ul>
+<li><a href="https://jratke587.github.io/DOPLED/classDOPLED.html#ad8be7b575134303325a3e33c118342dc">DOPLED::fillAll</a> - Sets the entire string to a specific color.</li>
+<li><a href="https://jratke587.github.io/DOPLED/classDOPLED.html#a2aba7b99872eb10defcc4e5e705eb41b">DOPLED::writePixel</a> - Sets a specific address to a specific color.</li>
+<li><a href="https://jratke587.github.io/DOPLED/classDOPLED.html#ad6524cea9fe8db586872e04ee4e0fa95">DOPLED::fillMatchingAddresses</a> - Uses an address and a bitmask to set addresses that match the specified bits.</li>
+<li><a href="https://jratke587.github.io/DOPLED/classDOPLED.html#a1f824dba50ea91a8cb02e3567cede7cf">DOPLED::fillRandomGroups</a> - Each LED will assign itself to a group randomly which can then be addressed.</li>
+</ul>
+<p>These LEDs use a very slow protocol (up to 14ms per command), so addressing in groups is important for smooth effects.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Hardware Setup</h1>
+<p>Remove the original controller and connect the lights via an N-Channel Mosfet as shown in the diagram. Note that the striped wire on the light string is positive. <img src="https://github.com/user-attachments/assets/dd1dcf51-4744-48a8-81f8-61d53201b8bb" alt="image" width="1585" height="620" class="inline"/></p>
+<p>Altenatively, the existing controller can be modified by removing the resistor connecting the mosfet gate to the microcontroller and soldering a wire to the mosfet gate and to ground. Mosfet gate can then be connected to the ESP32's GPIO pin and the grounds can be connected together.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Installation Instructions</h1>
+<p>Click the green 'Code' button at the top of this page, then 'Download ZIP'</p>
+<p>In Arduino IDE, click 'Sketch' -&gt; 'Include Library' -&gt; 'Add .ZIP Library...'</p>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Keywords</h1>
+<p>Hello Fairy; Dazzle Bright; Surplife; 2BM5F-HB-1000COI; Linhai Huanbo Lighting Co., Ltd; 2AKBP-HELLOFAIRY; Shenzhen Hysiry Technology Co., Ltd; Hello Fairy BMSL6; CL-600CC; Data Over Power; Powerline Communication; PLC </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

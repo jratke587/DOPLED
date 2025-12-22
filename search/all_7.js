@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_7edopled_0',['~DOPLED',['../classDOPLED.html#a3cbb3351122f38370af63de32fb523a7',1,'DOPLED']]]
+  ['led_20behavior_0',['LED Behavior',['../md_README.html#autotoc_md2',1,'']]],
+  ['leds_1',['Supported LEDs',['../md_README.html#autotoc_md1',1,'']]]
 ];
